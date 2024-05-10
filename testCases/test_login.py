@@ -1,5 +1,6 @@
 import allure
 import pytest
+from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.common.selenium_manager import SeleniumManager
 from selenium.webdriver.common.by import By
@@ -40,6 +41,7 @@ class Test_001_Login:
             assert True
         else:
             self.lp.driver.save_screenshot(".\\saveScreenshots\\" + "test_login.png")
+            allure.attach(self.driver.get_screenshot_as_png(),name = "Login Homepage",attachment_type=AttachmentType.PNG)
             self.lp.driver.close()
             assert False
 
